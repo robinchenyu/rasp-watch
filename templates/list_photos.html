@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <ul class=sysset>
+
+    <table border="1">
+        <tr>
+            <th>文件名</th>
+            <th>修改时间</th>
+        </tr>
+      {% for file, mtime in photos %}
+        <tr>
+            <td>            
+                <li><h2><a href="{{ file }}">{{ file }}</a></h2>
+            </td>
+            <td>
+                {{ mtime }}
+            </td>
+        </tr>
+      {% else %}
+        <li><em>Unbelievable.  No sysset here so far</em>
+      {% endfor %}
+    </table>
+  </ul>
+{% endblock %}

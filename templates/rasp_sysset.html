@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <ul class=sysset>
+    <form action="{{ url_for('sysset_set_db') }}" method="post" class="add-entry">
+      <dl>
+        <dt>序号:
+        <dd><input type=text size=30 name=id1>
+        <dt>取值:
+        <dd><input type=text size=35 name=value ></input>
+        <dd><input type=submit value=submit>
+      </dl>
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>序号</th>
+            <th>参数名</th>
+            <th>参数值</th>
+        </tr>
+      {% for entry in sysset %}
+        <tr>
+            <td>{{ entry.id1 }}</td>
+            <td>            
+                <li><h2>{{ entry.name }}</h2>
+            </td>
+            <td>
+                {{ entry.value|safe }}
+            </td>
+        </tr>
+      {% else %}
+        <li><em>Unbelievable.  No sysset here so far</em>
+      {% endfor %}
+    </table>
+  </ul>
+{% endblock %}
